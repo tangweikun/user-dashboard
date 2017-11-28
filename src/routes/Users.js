@@ -1,9 +1,12 @@
 import React from 'react';
-import { connect } from 'dva';
-import Users from '../components/Users/Users'
+import UsersComponent from '../components/Users/Users'
 
-function mapStateToProps() {
-  return {};
+function Users() {
+  return (
+    <div>
+      <UsersComponent />
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(Users);
+export default Users

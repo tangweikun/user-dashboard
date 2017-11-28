@@ -1,8 +1,8 @@
-import React from 'react';
-import { Router, Route } from 'dva/router';
-import IndexPage from './routes/IndexPage';
+import React from 'react'
+import { Router, Route } from 'dva/router'
+import IndexPage from './routes/IndexPage'
 
-import Users from "./routes/Users.js";
+import Users from './routes/Users.js'
 
 function RouterConfig({ history }) {
   return (
@@ -13,4 +13,4 @@ function RouterConfig({ history }) {
   );
 }
 
-export default RouterConfig;
+export default RouterConfig
