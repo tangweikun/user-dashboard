@@ -7,7 +7,12 @@ import styles from './Users.css'
 import { PAGE_SIZE } from '../../constants'
 
 function Users({ dispatch, list: dataSource, total, page: current, loading }) {
-  const deleteHandler = id => console.warn(`TODO: ${id}`)
+  const deleteHandler = id => {
+    dispatch({
+      type: 'users/remove',
+      payload: id,
+    })
+  }
 
   const pageChangHanler = page => {
     dispatch(routerRedux.push({
@@ -39,7 +44,7 @@ function Users({ dispatch, list: dataSource, total, page: current, loading }) {
       render: (text, { id }) => (
         <span className={styles.operation}>
           <a href="">Edit</a>
-          <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, id)}>
+          <Popconfirm title="Confirm to delete?" onConfirm={() => deleteHandler(id)}>
             <a href="">Delete</a>
           </Popconfirm>
         </span>

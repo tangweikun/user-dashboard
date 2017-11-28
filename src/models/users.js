@@ -23,6 +23,16 @@ export default {
           page: parseInt(page, 10),
         } })
     },
+    *remove({ payload: id }, { call, put, select }) {
+      yield call(usersService.remove, id)
+      const page = yield select(state => state.users.page)
+      yield put({ type: 'fetch', payload: { page } })
+      // yield put({ type: 'reload' })
+    },
+    // *reload(action, { put, select }) {
+    //   const page = yield select(state => state.users.page)
+    //   yield put({ type: 'fetch', payload: { page } })
+    // },
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -34,4 +44,3 @@ export default {
     },
   },
 }
-
