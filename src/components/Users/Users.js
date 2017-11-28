@@ -5,7 +5,7 @@ import { Table, Pagination, Popconfirm } from 'antd'
 import styles from './Users.css'
 import { PAGE_SIZE } from '../../constants'
 
-function Users({ list: dataSource, total, page: current }) {
+function Users({ list: dataSource, total, page: current, loading }) {
   const deleteHandler = id => console.warn(`TODO: ${id}`)
   const columns = [
     {
@@ -46,6 +46,7 @@ function Users({ list: dataSource, total, page: current }) {
           dataSource={dataSource}
           rowKey={record => record.id}
           pagination={false}
+          loading={loading}
         />
 
         <Pagination
@@ -63,6 +64,7 @@ const mapStateToProps = state => ({
   list: state.users.list,
   total: state.users.total,
   page: state.users.page,
+  loading: state.loading.models.users,
 })
 
 export default connect(mapStateToProps)(Users)
