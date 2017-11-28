@@ -1,14 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './Users.css';
-
-function Users() {
-  return (
-    <div className={styles.normal}>
-      Route Component: Users
-    </div>
-  );
-}
+import Users from '../components/Users/Users'
 
 function mapStateToProps() {
   return {};
