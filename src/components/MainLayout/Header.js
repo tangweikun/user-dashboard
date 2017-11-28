@@ -2,6 +2,24 @@ import React from 'react'
 import { Menu, Icon } from 'antd'
 import { Link } from 'dva/router'
 
+const menu = [
+  {
+    key: 'users',
+    to: '/users',
+    iconType: 'bars',
+  },
+  {
+    key: 'home',
+    to: '/',
+    iconType: 'home',
+  },
+  {
+    key: 'not_found',
+    to: '/page-you-dont-know',
+    iconType: 'frown-circle',
+  },
+]
+
 function Header({ location }) {
   return (
     <Menu
@@ -9,21 +27,15 @@ function Header({ location }) {
       mode="horizontal"
       theme="dark"
     >
-      <Menu.Item key="/users">
-        <Link to="/users">
-          <Icon type="bars" />
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/">
-        <Link to="/">
-          <Icon type="home" />
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/404">
-        <Link to="/page-you-dont-know">
-          <Icon type="frown-circle" />404
-        </Link>
-      </Menu.Item>
+      {
+        menu.map(item => (
+          <Menu.Item key={item.key}>
+            <Link to={item.to}>
+              <Icon type={item.iconType} />
+            </Link>
+          </Menu.Item>
+        ))
+      }
     </Menu>
   )
 }
