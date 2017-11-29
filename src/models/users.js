@@ -29,6 +29,11 @@ export default {
       yield put({ type: 'fetch', payload: { page } })
       // yield put({ type: 'reload' })
     },
+    *patch({ payload: { id, values } }, { call, put, select }) {
+      yield call(usersService.patch, id, values)
+      const page = yield select(state => state.users.page)
+      yield put({ type: 'fetch', payload: { page } })
+    },
     // *reload(action, { put, select }) {
     //   const page = yield select(state => state.users.page)
     //   yield put({ type: 'fetch', payload: { page } })
